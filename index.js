@@ -87,41 +87,19 @@ app.use((req,res,next)=>{
 
 // ------------------------------------------------cacheing code here----------------------------
 
-const client = redis.createClient({redis_port});
+const client = redis.createClient({
+    port: redis_port,
+});
 
 // Handle errors
 client.on("error", function (err) {
     console.log("Error: " + err);
   });
   
-  app.use(responseTime())
+//   app.use(responseTime())
 
-  function cache(req, res, next) {
-    const key = "__express__" + req.originalUrl || req.url;
-  
-    client.get(key).then(reply => {
-      
-      if (reply) {
-        res.send(JSON.parse(reply));
-      } else {
-        res.sendResponse = res.send;
-        res.send = (body) => {
-          //expire in 1 min
-          client.set(key, JSON.stringify(body), {'EX':10});
-          res.sendResponse(body);
-        };
-        next();
-      }
-    }).catch(err=>{
-      console.log(err);
-      res.status(500).send(err)
-    });
-  
-  }
 
   
-
-  app.use(cache);
 
 // --------------------------------------------------------------------------------------------------------------
 
@@ -308,7 +286,19 @@ app.patch('/edit',isLoggedIn,upload.single('image'),async(req,res)=>{
 })
 app.get('/connection',isLoggedIn,async(req,res)=>{
     const currentUser=await User.findById(req.user._id).populate('connections');
-    const users=await User.find();
+    const cachedata=await client.get(currentUser.username);
+    let users;
+    if(cachedata){
+        users=JSON.parse(cachedata);
+        // return  res.render("connection",{users,currentUser});
+    }else{
+        users=await User.find();
+        
+        client.set(currentUser.username,JSON.stringify(users));
+    }
+    // console.log();
+    
+    // console.log('hi');
     // console.log(users);
     res.render('conections',{users,currentUser});
 })
