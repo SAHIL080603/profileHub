@@ -86,10 +86,10 @@ app.use((req,res,next)=>{
 
 
 // ------------------------------------------------cacheing code here----------------------------
-
+const host='52.41.36.82'||'54.191.253.12'||'44.226.122.3';
 const client = redis.createClient({
     // host:'https://profilehub.onrender.com/',
-    host: 'redis-server',
+    host: host,
     port: redis_port,
 });
 
