@@ -88,7 +88,8 @@ app.use((req,res,next)=>{
 // ------------------------------------------------cacheing code here----------------------------
 
 const client = redis.createClient({
-    host:'https://profilehub.onrender.com/',
+    // host:'https://profilehub.onrender.com/',
+    host: 'redis-server',
     port: redis_port,
 });
 
@@ -291,6 +292,7 @@ app.get('/connection',isLoggedIn,async(req,res)=>{
     let users;
     if(cachedata){
         users=JSON.parse(cachedata);
+        // console.log('hi');
         // return  res.render("connection",{users,currentUser});
     }else{
         users=await User.find();
