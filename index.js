@@ -88,6 +88,7 @@ app.use((req,res,next)=>{
 // ------------------------------------------------cacheing code here----------------------------
 
 const client = redis.createClient({
+    host:'https://profilehub.onrender.com/',
     port: redis_port,
 });
 
