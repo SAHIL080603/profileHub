@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><% currentUser.firstname%>'s Connection</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="/dist/output.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    
+    
+
+ 
+ <aside id="separator-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+    <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+       <ul class="space-y-2 font-medium">
+          <li class="flex justify-end mb-8">
+             <a href="#" class="flex items-end p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group" style="border: 2px solid rgb(206, 203, 203);">
+                
+                <span class="mx-4 text-2xl" >Dashboard</span>
+             </a>
+          </li>
+          
+          
+          <li>
+            
+            <a href="/profile" class="flex items-center p-1">
+               > <span class="ml-2 text-xl p-2 px-5 flex justify-center text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group" >My Profile</span>
+            </a>
+         </li>
+          <li>
+            
+             <a href="/connection" class="flex items-center p-1">
+                > <span class="ml-2 text-xl flex justify-center p-2 px-5 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group" style="border: 2px solid rgb(206, 203, 203);">Connections</span>
+             </a>
+          </li>
+          
+       </ul>
+    </div>
+ </aside>
+ 
+ <div class="sm:ml-64">
+    <div id="navbar" style="height: max-content;" class="py-2 border-b-2 border-gray-200 flex px-8 justify-end items-center" >
+        <div>
+          <button style="float: left;" data-drawer-target="separator-sidebar" data-drawer-toggle="separator-sidebar" aria-controls="separator-sidebar" type="button" class="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+            <span class="sr-only">Open sidebar 
+                
+            </span>
+            
+            <svg class="w-6 h-6 mt-3" style="margin-left: -20px;" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+               <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
+            </svg>
+         </button>
+         <img src="https://play-lh.googleusercontent.com/DbPJM2-rgNze7cxL2Pfy3hNukeHxNaH-Y85cGmFQyyn8_cdnCDqsnV-zuC45x43JVXw" alt="" class="self-center sm:hidden" style="height: 80px;">
+          
+        </div>
+        <button style="margin: 10px 0px;" id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-whit border-2 border-gray-200 hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+            <img src="<%=currentUser.image %>" alt="" class="self-center flex-shrink-0 w-10 h-10 border rounded md:justify-self-start dark:bg-gray-500 dark:border-gray-700">
+                
+            <div class="mx-4" id="nav-text">
+               <div class="text-left" >Welcome Back</div>
+                <div class="text-semibold text-left text-xl"><%=currentUser.firstname%> <%=currentUser.lastname%></div>  
+            </div>
+            
+            <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+          </svg>
+        </button>
+        <!-- Dropdown menu -->
+        <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+              <li>
+                <a href="#" class="block px-4 py-2 hover:bg-blue-300 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+              </li>
+              <li>
+                <a href="/profile" class="block px-4 py-2 hover:bg-blue-300 dark:hover:bg-gray-600 dark:hover:text-white">Profile</a>
+              </li>
+              <li>
+                <a href="/connection" class="block px-4 py-2 hover:bg-blue-300 dark:hover:bg-gray-600 dark:hover:text-white">Connections</a>
+              </li>
+              <li>
+                <a href="/signout" class="block px-4 py-2 hover:bg-blue-300 dark:hover:bg-gray-600 dark:hover:text-white">Sign out</a>
+              </li>
+            </ul>
+        </div>
+
+    </div>
+    <% if(success && success.length){%>
+      <div id="alert-border-3" class="flex items-center p-4 mb-4 text-green-800 border-t-4 border-green-300 bg-green-50 dark:text-green-400 dark:bg-gray-800 dark:border-green-800" role="alert">
+          <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+          </svg>
+          <div class="ml-3 text-sm font-medium text-xl">
+            <%=success %>
+          </div>
+          <button type="button" class="ml-auto -mx-1.5 -my-1.5 bg-green-50 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1.5 hover:bg-green-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-green-400 dark:hover:bg-gray-700"  data-dismiss-target="#alert-border-3" aria-label="Close">
+            <span class="sr-only">Dismiss</span>
+            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+            </svg>
+          </button>
+      </div>
+  <% }  %>
+  <% if(error && error.length){%>
+      <div id="alert-border-2" class="flex items-center p-4 mb-4 text-red-800 border-t-4 border-red-300 bg-red-50 dark:text-red-400 dark:bg-gray-800 dark:border-red-800" role="alert">
+          <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+          </svg>
+          <div class="ml-3 text-sm font-medium text-xl">
+            <%=error %>
+          </div>
+          <button type="button" class="ml-auto -mx-1.5 -my-1.5 bg-red-50 text-red-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-red-400 dark:hover:bg-gray-700"  data-dismiss-target="#alert-border-2" aria-label="Close">
+            <span class="sr-only">Dismiss</span>
+            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+            </svg>
+          </button>
+      </div>
+  <% }  %>
+    <div style=" padding: 10px; background-color: aliceblue; height: 100%;">
+        <div class="z-10 text-3xl text-semibold text-white flex items-center px-4" id="box" style="height: 100px;">
+         My Connections
+        </div>
+       
+        <div class="mx-4 grid grid-cols-1 gap-4 md:grid-cols-3 sm:grid-cols-2">
+         <% if(currentUser.connections.length!=0){%>
+         <% for(let v of currentUser.connections){ %>
+            <div class="mt-4 p-3 rounded" style="border: 2px solid rgb(206, 203, 203);; overflow: hidden;">
+               <div class="mb-2 flex items-center justify-between">
+                   <div class="">
+                        <div class="font-semibold"><%= v.firstname %> <%=v.lastname %></div>
+                        <p class="text-sm"><%=v.company %> -- <%=v.job %></p>
+                       <button class="bg-gray-200 p-2 rounded-full text-sm mt-2 w-24"><a class="w-24 hover:underline" href="/connection/<%=v._id%>?add=0">Remove</a></button>
+                       
+                       
+                   </div>
+                   <img id="image" src="<%=v.image %>" alt="" class="self-center flex-shrink-0 w-24 h-24 border rounded-full md:justify-self-start dark:bg-gray-500 dark:border-gray-700">
+               </div>
+           </div>
+         <% } } else{%>
+
+            <div class="mt-3" style="font-weight: 600;">No Connections</div>
+         <% } %>
+         </div>
+         
+         <div class="text-2xl mt-4" style="font-weight: 600;">Peple You May Want to Connect</div>
+         
+         <div class="mx-4 grid grid-cols-1 gap-4 md:grid-cols-3 sm:grid-cols-2">
+            <% for(let v of users){ %>
+               <% if(v.username!=currentUser.username && !currentUser.connections.some(user => user._id.equals(v._id)) ) {%>
+               <div class="mt-4 p-3 rounded" style="border: 2px solid rgb(206, 203, 203); overflow: hidden;">
+                  <div class="mb-2 flex items-center justify-between">
+                      <div class="">
+                          <div class="font-semibold"><%= v.firstname %> <%=v.lastname %></div>
+                          <p class="text-sm"><%=v.company %> -- <%=v.job %></p>
+                          <button class="bg-gray-200 p-2 rounded-full text-sm mt-2 w-24"><a class="w-24 hover:underline" href="/connection/<%=v._id%>?add=1">Connect</a></button>
+                          
+                          
+                      </div>
+                      <img id="image" src="<%=v.image %>" alt="" class="self-center flex-shrink-0 w-24 h-24 border rounded-full md:justify-self-start dark:bg-gray-500 dark:border-gray-700">
+                  </div>
+              </div>
+            <% }} %>
+            
+            </div>
+       
+       
+    </div>
+ </div>
+ 
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"></script>
+</body>
+</html>
