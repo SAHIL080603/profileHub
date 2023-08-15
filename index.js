@@ -108,6 +108,9 @@ app.get('/profile',isLoggedIn,(req,res)=>{
     // req.flash('success','Welcome Back');
     res.render('profile',{currentUser});
 })
+app.get('/',(req,res)=>{
+    res.redirect('/profile');
+})
 app.get('/edit/skills',isLoggedIn,async(req,res)=>{
     try{
         // const {id}=req.params;
