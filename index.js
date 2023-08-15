@@ -24,6 +24,7 @@ const responseTime = require("response-time")
 
 const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/user-app';
 const port = process.env.PORT || 3000;
+const redis_port=process.env.PORT || 6379;
 
 mongoose.connect(dbUrl)
     .then(console.log('Database Conneted!!'))
@@ -86,10 +87,7 @@ app.use((req,res,next)=>{
 
 // ------------------------------------------------cacheing code here----------------------------
 
-const client = redis.createClient({
-  host: "https://profilehub.onrender.com/",
-  port: port,
-});
+const client = redis.createClient({redis_port});
 
 // Handle errors
 client.on("error", function (err) {
