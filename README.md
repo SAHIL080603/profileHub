@@ -12,6 +12,7 @@ Site link -- https://profilehub.onrender.com/
 ![Screenshot of connections page on desktop/laptop](/assets/connection_lap.png)
 
 ## Screenshot on Mobile Device
-### profile page &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp; connections page
+### profile page
 ![Screenshot of profile page on mobile](/assets/profile_mob.png) 
+### connections page
 ![Screenshot of connections page on mobile](/assets/connection_mob.png)
